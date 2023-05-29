@@ -2,19 +2,23 @@
 // we only have one game info so everything is static
 class GameInfo  {
     // settings variables
-    static width = 1200;
-    static height = 600;
+    static width = 1400;
+    static height = 750;
 
     static loading = true;
 
     // data
     static game;
+    static matchDecks;
     static images = {};
     static sounds = {};
 
-    // rendererers
+    // renderers
     static scoreBoard;
-    static scoreWindow;
+    static playerDeck;
+    static oppDeck;
+    static playerShip;
+    static oppShip;
 
     // buttons
     static endturnButton;
@@ -26,9 +30,6 @@ class GameInfo  {
             GameInfo.endturnButton.show();
         } else if (GameInfo.game.player.state == "Waiting") {
             GameInfo.endturnButton.hide();
-        }  else if (GameInfo.game.player.state == "Score") {
-            GameInfo.endturnButton.hide();
-            GameInfo.scoreWindow.open();
-        }
+        } 
     }
 }
