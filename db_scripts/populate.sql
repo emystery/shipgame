@@ -17,7 +17,7 @@ insert into ship_state (shs_state) values ('Ready');
 insert into ship_state (shs_state) values ('Acted');
 insert into ship_state (shs_state) values ('Defensive');
 
-insert into card_type (ct_name) values ('Attack'),('Heal'),('Defense');
+insert into card_type (ct_name) values ('Attack'),('Heal'),('Defense'),('Utility');
 
 
 insert into card (crd_cost,crd_name, crd_effect,crd_note,crd_type_id) values 
@@ -27,7 +27,13 @@ insert into card (crd_cost,crd_name, crd_effect,crd_note,crd_type_id) values
    (1,"Weak Spot Attack","Does 1 damage","Add 1 damage more for each attack made this turn",1),
    (2,"Repair","Recovers 2 HP of your ship",null,2),
    (3,"Last Hope","Recover 4 HP or up 10 HP, whatever is greater","Deplets all action points. Must be played as the only card of the turn.",2),
-   (2,"Defensive Maneuvers","All normal attacks fail until your next turn","Must be played as the only card of the turn.",3);
+   (2,"Defensive Maneuvers","All normal attacks fail until your next turn","Must be played as the only card of the turn.",3),
+   
+
+
+   (4,"Victory","Instantly destroys the opponent's ship","Must be played as the only card of the turn.",1),
+
+   (0,"Steal AP","Steals 3 AP",null, 4),
 
 INSERT INTO user VALUES (1,'me','$2b$10$Wemfac2wY/7RSCdKxuYUL.GV2clfhXC66OL76uCpDFUmpYZ/bGZtW','48MnTVJ6sKIvanVHbP5Vx5rysbYrVN4EbYmk4D8xESdfm1hx8jDfNFZGNw9OZs'),(2,'me2','$2b$10$6j2xIDnnxv.TLfBSstbbO.qE7wFTf5envx/uijiFjCP3slsy7EE4K','dQ7NrsbPsuF81xFGNioR1K0tiYkjtxOhemcgMhuFIS68VrFUC9gggm3JCgzkqe');
 INSERT INTO game VALUES (1,1,2);

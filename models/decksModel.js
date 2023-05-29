@@ -111,7 +111,7 @@ class MatchDecks {
                 [game.player.id, deckId]);
             if (dbDeckCards.length == 0) {
                 return {status:404, result:{msg:"Card not found for this player or not active"}};
-            }   
+            }
             let card =  fromDBCardToCard(dbDeckCards[0]);
             let playerShip = game.player.ship;
             let oppShip = game.opponents[0].ship; 
@@ -150,6 +150,11 @@ class MatchDecks {
                 case 5: healRepair(playerShip); break;
                 case 6: healLastHope(playerShip); break;
                 case 7: defenseManeuvers(playerShip); break;
+
+
+                case 8: victory(oppShip, playerShip); break;
+                case 9: apSteal(oppShip, playerShip); break;
+
             }
             let shipSql = `update ship set sh_state_id = ?, sh_hp = ?, sh_ap = ?
                            where sh_id = ?`;
@@ -216,8 +221,17 @@ function defenseManeuvers(playerShip) {
 }
 
 
+function victory(oppShip, playerShip) {
+    oppShip.hp = 0;
+    playerShip.ap = 0;
+}
 
-
+function apSteal(oppShip, playerShip) {
+    if (oppShip.ap >= 3) {
+        oppShip.ap -= 3;
+        playerShip.ap += 3;
+    }
+}
 
 
 
